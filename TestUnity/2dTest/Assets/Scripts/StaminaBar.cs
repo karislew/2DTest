@@ -34,7 +34,7 @@ public class StaminaBar : MonoBehaviour
         if(currentStamina - amount >= 0)
         {
             //Debug.Log("Current move speed" + PlayerController.instance.moveSpeed);
-            //PlayerController.instance.moveSpeed=2f;
+            PlayerController.instance.moveSpeed=3f;
             currentStamina-=amount;
             staminaBar.value=currentStamina;
 
@@ -61,10 +61,10 @@ public class StaminaBar : MonoBehaviour
     }
     private IEnumerator RegenStamina()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(2f);
         while(currentStamina<maxStamina)
         {
-            currentStamina += maxStamina/50;
+            currentStamina += maxStamina/100;
             
             staminaBar.value=currentStamina;
     

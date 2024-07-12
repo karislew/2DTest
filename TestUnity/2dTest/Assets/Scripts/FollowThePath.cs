@@ -61,15 +61,15 @@ public class FollowThePath : MonoBehaviour
         {
             //move enemy from current waypoint to the next 
 
-            Debug.Log("transform.position before" + transform.position);
-            Debug.Log("points position before" + waypoints[waypointIndex].position);
+           // Debug.Log("transform.position before" + transform.position);
+            //Debug.Log("points position before" + waypoints[waypointIndex].position);
             
             transform.position= Vector3.MoveTowards(transform.position,
             waypoints[waypointIndex].transform.position,
             moveSpeed*Time.deltaTime);
 
-            Debug.Log("transform.position after" + transform.position);
-            Debug.Log("points position after" + waypoints[waypointIndex].position);
+            //Debug.Log("transform.position after" + transform.position);
+            //Debug.Log("points position after" + waypoints[waypointIndex].position);
             
 
             //if enemy reached position where he can walk towards then waypoint is increased by one 
@@ -113,7 +113,7 @@ public class FollowThePath : MonoBehaviour
     private IEnumerator Disappear()
     {
         yield return new WaitForSeconds(3);
-        Debug.Log("position" + transform.position);
+       // Debug.Log("position" + transform.position);
         transform.position= endpoints[waypointIndex].transform.position;
         SecondMove();
 
