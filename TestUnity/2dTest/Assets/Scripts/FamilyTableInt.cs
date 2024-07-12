@@ -5,52 +5,48 @@ using UnityEngine.UI;
 
 public class FamilyTableInt : MonoBehaviour
 {
-    public int minProgress=0;
-    public int maxProgress=100;
-    private int enemyProgress;
-    private bool inTrig=false;
     public Slider progressBar;
-    // Start is called before the first frame update
-    void Start()
-    {
-        enemyProgress= 20;
-        
-    }
+    public float decrementRate = 5.0f; // Adjust this rate as needed
 
-    // Update is called once per frame
-    void Update()
+
+    /*
+    private void Update()
     {
-        if(inTrig)
+        if (progressBar != null && progressBar.value > 0)
         {
-            Debug.Log("enemyprogress"+enemyProgress);
-            DecProgress(10);
-            //Debug.Log("Progress" + progressBar.value);
+            DecreaseProgress(1);
         }
     }
+
+    */
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.CompareTag("Table"))
+        if (collider.gameObject.CompareTag("Table"))
         {
-            Debug.Log(" F COLLIDEEE");
-            inTrig=true;
-
-           
+            DecreaseProgress(30);
+            
+            Debug.Log("Enemy entered table trigger.");
         }
     }
+
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if(collider.gameObject.CompareTag("Table"))
+        if (collider.gameObject.CompareTag("Table"))
         {
-            Debug.Log(" F NOT COLLIDE");
-            inTrig=false;
-
-           
+            Debug.Log("Enemy exited table trigger.");
         }
     }
-    void DecProgress(int progress)
+
+    void DecreaseProgress(float progress)
     {
-        //add the progress to current progress
-        enemyProgress-=progress;
-        progressBar.value=enemyProgress;
+       
+        
+        progressBar.value -=progress;
+       
+
+
+        //progressBar.value -= progress;
+       
     }
 }

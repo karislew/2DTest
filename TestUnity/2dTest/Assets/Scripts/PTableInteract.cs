@@ -131,7 +131,7 @@ public class PTableInteract : MonoBehaviour
 {
     public int minProgress = 0;
     public int maxProgress = 100;
-    public int currentProgress;
+    public float currentProgress;
     public Slider progressBar;
     private bool inTrig = false;
     private Coroutine regenCoroutine;
@@ -147,6 +147,7 @@ public class PTableInteract : MonoBehaviour
 
     void Update()
     {
+        currentProgress = progressBar.value;
         if (inTrig && Input.GetKey(KeyCode.Space))
         {
             if (regenCoroutine == null)
@@ -163,14 +164,14 @@ public class PTableInteract : MonoBehaviour
             }
             
         }
-        progressBar.value=currentProgress;
+        //progressBar.value=currentProgress;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Table"))
         {
-            Debug.Log("COLLIDEEE");
+            //Debug.Log("COLLIDEEE");
             inTrig = true;
         }
     }
@@ -179,9 +180,9 @@ public class PTableInteract : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Table"))
         {
-            Debug.Log("NOT COLLIDE");
+            //Debug.Log("NOT COLLIDE");
             inTrig = false;
-            progressBar.value=currentProgress;
+            //progressBar.value=currentProgress;
         }
     }
 
@@ -191,7 +192,7 @@ public class PTableInteract : MonoBehaviour
         {
             currentProgress+=maxProgress/100;
             progressBar.value = currentProgress;
-            Debug.Log("Current Progress: " + currentProgress);
+           // Debug.Log("Current Progress: " + currentProgress);
             yield return progressTick;
         }
     }
