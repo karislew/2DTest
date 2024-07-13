@@ -34,7 +34,7 @@ public class StaminaBar : MonoBehaviour
         if(currentStamina - amount >= 0)
         {
             //Debug.Log("Current move speed" + PlayerController.instance.moveSpeed);
-            PlayerController.instance.moveSpeed=4f;
+            //PlayerController.instance.moveSpeed=2f;
             currentStamina-=amount;
             staminaBar.value=currentStamina;
 
